@@ -8,6 +8,12 @@ void main() {
   runApp(const MyApp());
 }
 
+var myColorScheme = ColorScheme.fromSeed(
+    seedColor: Color.fromARGB(255, 18, 32, 161));
+
+var myDarkColorScheme = ColorScheme.fromSeed(
+    seedColor: Color.fromARGB(255, 15, 26, 125));
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -24,9 +30,49 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              useMaterial3: true,
+            theme: ThemeData().copyWith(
+              colorScheme: myColorScheme,
+              appBarTheme: AppBarTheme().copyWith(
+                backgroundColor: myColorScheme.onPrimaryContainer,
+                foregroundColor: myColorScheme.primaryContainer,
+              ),
+              cardTheme: CardTheme().copyWith(
+                color: myColorScheme.secondaryContainer,
+                margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8)
+              ),
+
+              outlinedButtonTheme: OutlinedButtonThemeData(
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(color: myColorScheme.onPrimaryContainer)
+                )
+              )
             ),
+            darkTheme: ThemeData.dark().copyWith(
+                colorScheme: myDarkColorScheme,
+                appBarTheme: AppBarTheme().copyWith(
+                  backgroundColor: myDarkColorScheme.onPrimaryContainer,
+                  foregroundColor: myDarkColorScheme.primaryContainer,
+                ),
+                cardTheme: CardTheme().copyWith(
+                    color: myDarkColorScheme.primary,
+                    margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8)
+                ),
+                bottomSheetTheme: BottomSheetThemeData(
+                  backgroundColor: myDarkColorScheme.onPrimaryContainer
+                ),
+                outlinedButtonTheme: OutlinedButtonThemeData(
+                    style: OutlinedButton.styleFrom(
+                        side: BorderSide(color: myDarkColorScheme.onSecondary),
+                        foregroundColor: myDarkColorScheme.onSecondary
+                    )
+                ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                    foregroundColor: myDarkColorScheme.onSecondary
+                ),
+              ),
+            ),
+            // themeMode: ThemeMode.system,
             initialRoute: 'expenses_screen',
             routes: {
               'expenses_screen': (context) => ExpensesScreen(),
