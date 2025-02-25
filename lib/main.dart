@@ -1,4 +1,5 @@
 import 'package:expenses_app/cubit/cubit.dart';
+import 'package:expenses_app/cubit/status.dart';
 import 'package:expenses_app/layouts/expenses_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,15 +18,20 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider( create: (BuildContext context) => ExpensesCubit()),
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-        ),
-        initialRoute: 'expenses_screen',
-        routes: {
-          'expenses_screen': (context) => ExpensesScreen(),
+      child: BlocConsumer<ExpensesCubit,Status>(
+        listener: (BuildContext context, Status state) {  },
+        builder: (BuildContext context, Status state) {
+          return MaterialApp(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              useMaterial3: true,
+            ),
+            initialRoute: 'expenses_screen',
+            routes: {
+              'expenses_screen': (context) => ExpensesScreen(),
+            },
+          );
         },
       ),
     );
