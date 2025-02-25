@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 final uuid = Uuid();
-enum Categories {food, travel, clothes, medicine, work}
+enum Categories {food, travel, clothes, medicine, work, fun , health}
 final  dateFormat = DateFormat.yMd();
 
 const  categoryIcons = {
@@ -12,6 +12,8 @@ const  categoryIcons = {
   Categories.work : Icons.work,
   Categories.medicine : Icons.medical_information,
   Categories.travel : Icons.travel_explore,
+  Categories.fun : Icons.movie,
+  Categories.health : Icons.sports_gymnastics_sharp,
 };
 
 class Expenses {
