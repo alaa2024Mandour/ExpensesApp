@@ -5,6 +5,7 @@ Widget expensesItem ({required List<Expenses> model, required int index}) => Car
   child: Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(model[index].productName),
 

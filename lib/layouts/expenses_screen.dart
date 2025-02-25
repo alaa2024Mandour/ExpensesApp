@@ -65,6 +65,11 @@ class ExpensesScreen extends StatelessWidget {
                 Expanded(
                   child: ListView.separated(
                       itemBuilder: (context,index) => Dismissible(
+                        background: Container(
+                          color: Theme.of(context).colorScheme.error.withOpacity(0.7),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: Theme.of(context).cardTheme.margin!.horizontal),
+                        ),
                           key: ValueKey(registeredExpenses[index]),
                           onDismissed: (direction)=>{
                             cubit.removeExpense(registeredExpenses[index])
