@@ -2,10 +2,14 @@ import 'package:expenses_app/cubit/cubit.dart';
 import 'package:expenses_app/cubit/status.dart';
 import 'package:expenses_app/layouts/expenses_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((onValue)=>  runApp(const MyApp()));
 }
 
 var myColorScheme = ColorScheme.fromSeed(
@@ -72,7 +76,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            // themeMode: ThemeMode.system,
+            themeMode: ThemeMode.system,
             initialRoute: 'expenses_screen',
             routes: {
               'expenses_screen': (context) => ExpensesScreen(),

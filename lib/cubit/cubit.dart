@@ -52,4 +52,30 @@ void addNewExpense(Expenses expense){
     emit(RemoveExpenseState());
   }
 
+
+  //#### handling Chart #####
+//### chart data ###
+  List<ExpensesBucket> get bucket {
+    return [
+      ExpensesBucket.forCategory(registeredExpenses, Categories.health),
+      ExpensesBucket.forCategory(registeredExpenses, Categories.fun),
+      ExpensesBucket.forCategory(registeredExpenses, Categories.food),
+      ExpensesBucket.forCategory(registeredExpenses, Categories.travel),
+      ExpensesBucket.forCategory(registeredExpenses, Categories.medicine),
+      ExpensesBucket.forCategory(registeredExpenses, Categories.work),
+      ExpensesBucket.forCategory(registeredExpenses, Categories.clothes),
+    ];
+  }
+
+  double get maxExpenseTotal{
+    double maxTotalExpense = 0;
+
+    for(var element in bucket){
+      if(element.totalExpenses > maxTotalExpense){
+        maxTotalExpense = element.totalExpenses;
+      }
+    }
+
+    return maxTotalExpense;
+  }
 }

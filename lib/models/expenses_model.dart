@@ -11,7 +11,7 @@ const  categoryIcons = {
   Categories.clothes : Icons.shopping_cart,
   Categories.work : Icons.work,
   Categories.medicine : Icons.medical_information,
-  Categories.travel : Icons.travel_explore,
+  Categories.travel : Icons.flight_takeoff,
   Categories.fun : Icons.movie,
   Categories.health : Icons.sports_gymnastics_sharp,
 };
