@@ -36,3 +36,21 @@ List<Expenses> registeredExpenses = [
       categories: Categories.food
   ),
 ];
+
+class ExpensesBucket{
+  final Categories category ;
+  final List<Expenses> expenses;
+
+  ExpensesBucket(this.category, this.expenses);
+
+  ExpensesBucket.forCategory(List<Expenses> allExpenses,this.category):expenses=allExpenses
+  .where((element)=> element.categories == category).toList();
+
+  double get totalExpenses {
+    double sum =0;
+    for(var expense in expenses){
+      sum += expense.amount;
+    }
+    return sum;
+  }
+}
